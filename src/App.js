@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Location from './components/Location';
 import axios from 'axios';
 import Form from './components/Form';
-// import ErrorCard from './components/ErrorCard';
+import ErrorCard from './components/ErrorCard';
+import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +12,7 @@ class App extends Component {
       latitude: "",
       longitude: "",
       showData: false,
-      error400: ""
+      showError: false,
 
     }
   }
@@ -25,6 +26,14 @@ class App extends Component {
 
     })
   }
+  handleCloce = (e) => {
+    this.setState = ({
+      showError: false
+    })
+    console.log('object')
+  }
+
+  
 
   handleSubmit = (e) => {
 
@@ -33,8 +42,11 @@ class App extends Component {
 
     let config = {
       method: "GET",
-      baseURL: `https://api.locationiq.com/v1/autocomplete.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.display_name}`
+      baseURL: `https://api.locationiq.com/v1/autocomplete.php?
+      key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.display_name}`
     }
+   
+    
     axios(config).then(res => {
       let responseData = res.data[0]
       this.setState({
@@ -42,11 +54,20 @@ class App extends Component {
         longitude: responseData.lon,
         latitude: responseData.lat,
         showData: true,
-        error400: res.status
-      })
-    })
+      });
 
+    }).catch(error => {
+        
+        if (error.response) {
+        return this.setState({
+          showError: true
+          });
+      }
+    });
   }
+
+
+
 
 
   render() {
@@ -59,13 +80,16 @@ class App extends Component {
             latitude={this.state.latitude}
             longitude={this.state.longitude} />
         }
-        
-        <img src={`https://api.locationiq.com/v1/autocomplete.php?
+
+        <img src={`https://maps.locationiq.com/v3/staticmap?
         key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}
-        &center=${this.state.latitude},${this.state.longitude}&zoom=1-18` } alt="jhhy"/>
-        
-        
-        {/* <ErrorCard /> */}
+        &center=${this.state.latitude},${this.state.longitude}&zoom=1-18`} alt="jhhy" />
+
+
+        <ErrorCard
+          showError={this.state.showError}
+          handleCloce={this.handleCloce}
+        />
       </>
     )
   }
