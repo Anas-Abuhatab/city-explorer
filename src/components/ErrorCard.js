@@ -1,34 +1,15 @@
-// import React, { Component } from 'react';
-// import {
-//     Modal,
-//     Button
-// } from 'react-bootstrap'
+import React, { Component } from 'react';
+import {
+    Alert
+} from 'react-bootstrap'
 
-
-// class ErrorCard extends Component {
-//     render() {
-//         return (
-
-//             <>
-
-
-//                 <Modal show={this.props.showError} onHide={this.props.handleCloce}>
-//                     <Modal.Header closeButton>
-//                         <Modal.Title>Error Massage</Modal.Title>
-//                     </Modal.Header>
-//                     <Modal.Body><h2>"error": "Unable to geocode"</h2></Modal.Body>
-//                     <Modal.Footer>
-//                         <Button variant="secondary" onClick={this.props.handleCloce}>
-//                             Close
-//                         </Button>
-
-//                     </Modal.Footer>
-//                 </Modal>
-
-                
-//             </>
-//         )
-//     }
-
-// }
-// export default ErrorCard
+class ErrorCard extends Component {
+    render() {
+        return (
+            <Alert variant="danger"  >
+                <Alert.Heading>"error": "Unable to geocode"</Alert.Heading>
+            </Alert>
+        )
+    }
+}
+export default ErrorCard
