@@ -4,7 +4,7 @@ import React, { Component } from 'react'
     render() {
         return (
             <div>
-                <h1>{this.props.display_name}</h1>
+                <h1>{this.props.display_location}</h1>
                 <h1>{this.props.latitude}</h1>
                 <h1>{this.props.longitude}</h1>
                

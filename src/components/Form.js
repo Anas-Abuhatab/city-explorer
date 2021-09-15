@@ -5,7 +5,7 @@ import React, { Component } from 'react';
     render() {
         
         return (
-            <>
+            <div>
             <form onSubmit={this.props.handleSubmit}>
                 <input type="text"
                 
@@ -18,7 +18,7 @@ import React, { Component } from 'react';
                 />
             </form>
            
-            </>
+            </div>
         )
     }
 }
