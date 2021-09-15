@@ -1,18 +1,19 @@
 {
   "name": "city-explorer",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "**Author**: Anas Abuhatab **Version**: 1.0.0",
+  "main": "index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "axios": "^0.21.4",
-    "bootstrap": "^5.0.1",
+    "bootstrap": "^5.1.0",
     "react": "^17.0.2",
-    "react-bootstrap": "^2.0.0-beta.6",
+    "react-bootstrap": "^2.0.0-beta.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "axios": "^0.21.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -20,22 +21,22 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anas-Abuhatab/city-explorer.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anas-Abuhatab/city-explorer/issues"
+  },
+  "homepage": "https://github.com/Anas-Abuhatab/city-explorer"
+
+ 
 }
