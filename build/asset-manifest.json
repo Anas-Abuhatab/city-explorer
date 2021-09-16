@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Anas-Abuhatab/city-explorer/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/Anas-Abuhatab/city-explorer/static/js/main.561dcc04.chunk.js",
+    "main.js.map": "/Anas-Abuhatab/city-explorer/static/js/main.561dcc04.chunk.js.map",
+    "runtime-main.js": "/Anas-Abuhatab/city-explorer/static/js/runtime-main.e8278dcf.js",
+    "runtime-main.js.map": "/Anas-Abuhatab/city-explorer/static/js/runtime-main.e8278dcf.js.map",
+    "static/css/2.f2512455.chunk.css": "/Anas-Abuhatab/city-explorer/static/css/2.f2512455.chunk.css",
+    "static/js/2.63f1a506.chunk.js": "/Anas-Abuhatab/city-explorer/static/js/2.63f1a506.chunk.js",
+    "static/js/2.63f1a506.chunk.js.map": "/Anas-Abuhatab/city-explorer/static/js/2.63f1a506.chunk.js.map",
+    "static/js/3.a7b3ad5d.chunk.js": "/Anas-Abuhatab/city-explorer/static/js/3.a7b3ad5d.chunk.js",
+    "static/js/3.a7b3ad5d.chunk.js.map": "/Anas-Abuhatab/city-explorer/static/js/3.a7b3ad5d.chunk.js.map",
+    "index.html": "/Anas-Abuhatab/city-explorer/index.html",
+    "static/css/2.f2512455.chunk.css.map": "/Anas-Abuhatab/city-explorer/static/css/2.f2512455.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/Anas-Abuhatab/city-explorer/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.63f1a506.chunk.js.LICENSE.txt": "/Anas-Abuhatab/city-explorer/static/js/2.63f1a506.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e8278dcf.js",
+    "static/css/2.f2512455.chunk.css",
+    "static/js/2.63f1a506.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.561dcc04.chunk.js"
+  ]
+}
