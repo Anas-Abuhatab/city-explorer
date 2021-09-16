@@ -1,6 +1,6 @@
 import { React, Component } from 'react';
-import Location from './components/Location';
-import axios from 'axios';
+import Weather from './components/Weather';
+import axios from "axios";
 import Form from './components/Form';
 import ErrorCard from './components/ErrorCard';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,7 +17,8 @@ class App extends Component {
       showError: false,
       weatherData: [],
       status: "",
-      display_location: ""
+      display_location: "",
+      shoWeather:false
     }
   }
 
@@ -26,7 +27,6 @@ class App extends Component {
     this.setState({
       display_name: display_name
     })
-    console.log(display_name)
   }
 
 
@@ -45,24 +45,36 @@ class App extends Component {
         latitude: responseData.lat,
         showData: true,
         status: "",
-        showError: false
-
+        showError: false,
+        
       });
     })
       .then(() => {
-        axios.get(`http://${process.env.REACT_APP_BACKEND_URL}/weather?searchQuery=${this.state.display_name}}`)
-          .then((res, req) => {
-
+       let city_name=this.state.display_location.split(',')[0];
+       console.log(city_name)
+        axios.get(`http://${process.env.REACT_APP_BACKEND_URL}/weather?search=${city_name}&lat=${this.state.latitude}&lon=${this.state.longitude}`)
+        .then((res) => {
             this.setState({
               weatherData: res.data,
               status: "",
-              showError: false
+              showError: false,
+              shoWeather:true
             })
-          });
+            
+          }).catch(err => {
+            console.log(err)
+            this.setState({
+              status: "error: Something went wrong. Please inter (Amman,Paris,Seattle) for weather info",
+              weatherData: [],
+              shoWeather:false
+            })
+          })
       }).catch(err => {
+        console.log(err)
         this.setState({
-          status: "Please inter (Amman,Paris,Seattle) for weather info",
-          showError: true
+          weatherData: [],
+          showError: true,
+          shoWeather:false
         })
       })
   }
@@ -71,28 +83,21 @@ class App extends Component {
 
       <div>
         <h1> City Explorer</h1>
-        {
-          this.state.showError && <ErrorCard />
-        }
+       
         <Form handleSubmit={this.handleSubmit}
           handleLocation={this.handleLocation} />
+           {
+          this.state.showError && <ErrorCard />
+        }
         {this.state.showData &&
-          <Location
+          <Weather
+          shoWeather={this.state.shoWeather}
             display_location={this.state.display_location}
             latitude={this.state.latitude}
-            longitude={this.state.longitude} />
+            longitude={this.state.longitude} 
+            weatherData={this.state.weatherData}/>
         }
-        {
-          this.state.weatherData.map(item => {
-            return (
-              <div>
-                <h2>{item.date}</h2>
-                <h2>{item.description}</h2>
-              </div>
-            )
-          })
-
-        }
+      
         <h2>{this.state.status}</h2>
 
         <BSimg latitude={this.state.latitude}
