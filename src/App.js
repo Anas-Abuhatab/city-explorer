@@ -5,6 +5,7 @@ import Form from './components/Form';
 import ErrorCard from './components/ErrorCard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BSimg from './components/BSimg';
+import Movie from './components/Movie';
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class App extends Component {
       weatherData: [],
       status: "",
       display_location: "",
-      shoWeather:false
+      shoWeatherAndMovieAndMovie:false,
+      movie :[]
     }
   }
 
@@ -43,29 +45,41 @@ class App extends Component {
         longitude: responseData.lon,
         latitude: responseData.lat,
         showData: true,
-        status: "",
+      
         showError: false,
         
       });
     })
       .then(() => {
        let city_name=this.state.display_location.split(',')[0];
-       console.log(city_name)
-        axios.get(`http://${process.env.REACT_APP_BACKEND_URL}/weather?search=${city_name}&lat=${this.state.latitude}&lon=${this.state.longitude}`)
+       
+        axios.get(`http://${process.env.REACT_APP_BACKEND_URL}/weather?lat=${this.state.latitude}&lon=${this.state.longitude}`)
         .then((res) => {
             this.setState({
               weatherData: res.data,
-              status: "",
+             
               showError: false,
-              shoWeather:true
+              shoWeatherAndMovie:true
             })
             
           }).catch(err => {
             console.log(err)
             this.setState({
-              status: "error: Something went wrong. Please inter (Amman,Paris,Seattle) for weather info",
+              
               weatherData: [],
-              shoWeather:false
+              shoWeatherAndMovie:false
+            })
+          })
+
+          axios.get(`http://localhost:8000/movies?query=Amman`)
+          .then((res)=>{
+            
+            this.setState({
+              movie:res.data,
+              status: "",
+              showError: false,
+              shoWeatherAndMovie:true
+              
             })
           })
       }).catch(err => {
@@ -73,9 +87,11 @@ class App extends Component {
         this.setState({
           weatherData: [],
           showError: true,
-          shoWeather:false
+          shoWeatherAndMovie:false
         })
       })
+
+      
   }
   render() {
     return (
@@ -90,18 +106,26 @@ class App extends Component {
         }
         {this.state.showData &&
           <Weather
-          shoWeather={this.state.shoWeather}
+          shoWeatherAndMovie={this.state.shoWeatherAndMovie}
             display_location={this.state.display_location}
             latitude={this.state.latitude}
             longitude={this.state.longitude} 
             weatherData={this.state.weatherData}/>
+        }
+         
+        {this.state.showData &&
+          <Movie
+          shoWeatherAndMovie={this.state.shoWeatherAndMovie}
+            display_location={this.state.display_location}
+            movie={this.state.movie}/>
         }
       
         <h2>{this.state.status}</h2>
 
         <BSimg latitude={this.state.latitude}
           longitude={this.state.longitude} />
-
+<img src="data:image/jpg;base64,/lsuVrEhIEr9zCu07fhSYdU12s7E.jpg" alt="dddddd"/>
+{/* <img src=""data:image/png;base64,"+image_base64 +""" alt=""alt text"" /> */}
 
       </div>
     )
