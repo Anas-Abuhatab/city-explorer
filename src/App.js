@@ -17,9 +17,8 @@ class App extends Component {
       showData: false,
       showError: false,
       weatherData: [],
-      status: "",
       display_location: "",
-      shoWeatherAndMovieAndMovie:false,
+      shoWeatherAndMovie:false,
       movie :[]
     }
   }
@@ -45,7 +44,7 @@ class App extends Component {
         longitude: responseData.lon,
         latitude: responseData.lat,
         showData: true,
-      
+        
         showError: false,
         
       });
@@ -53,11 +52,11 @@ class App extends Component {
       .then(() => {
        let city_name=this.state.display_location.split(',')[0];
        
-        axios.get(`http://${process.env.REACT_APP_BACKEND_URL}/weather?lat=${this.state.latitude}&lon=${this.state.longitude}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/weather?lat=${this.state.latitude}&lon=${this.state.longitude}`)
         .then((res) => {
             this.setState({
               weatherData: res.data,
-             
+              
               showError: false,
               shoWeatherAndMovie:true
             })
@@ -65,20 +64,20 @@ class App extends Component {
           }).catch(err => {
             console.log(err)
             this.setState({
-              
+              shoWeatherAndMovie:false,
               weatherData: [],
-              shoWeatherAndMovie:false
+              
             })
           })
 
-          axios.get(`http://localhost:8000/movies?query=Amman`)
+          axios.get(`${process.env.REACT_APP_BACKEND_URL}/movies?query=${city_name}`)
           .then((res)=>{
             
             this.setState({
               movie:res.data,
               status: "",
               showError: false,
-              shoWeatherAndMovie:true
+              shoWeatherAndMovie:true,
               
             })
           })
@@ -124,8 +123,7 @@ class App extends Component {
 
         <BSimg latitude={this.state.latitude}
           longitude={this.state.longitude} />
-<img src="data:image/jpg;base64,/lsuVrEhIEr9zCu07fhSYdU12s7E.jpg" alt="dddddd"/>
-{/* <img src=""data:image/png;base64,"+image_base64 +""" alt=""alt text"" /> */}
+{/* <img src="data:image/jpg;base64,/lsuVrEhIEr9zCu07fhSYdU12s7E.jpg" alt="dddddd"/> */}
 
       </div>
     )
