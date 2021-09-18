@@ -24,8 +24,8 @@ class Weather extends Component {
                 </Card>
     
                 {   
-                  console.log(this.props.shoWeather),
-              (this.props.shoWeather &&  <Card>
+                  
+              (this.props.shoWeatherAndMovie &&  <Card>
                         <Card.Header as="h5">Weather Info</Card.Header>
                         <Card.Body>
                             <Card.Title>{this.props.display_location.split(',')[0]}</Card.Title>
@@ -34,8 +34,8 @@ class Weather extends Component {
                                     this.props.weatherData.map(item => {
                                         return (
                                             <div>
-                                                <h2>{item.data}</h2>
-                                                <h2>{item.description}</h2>
+                                                <h2>Current Time: {item.date}</h2>
+                                                <h2>Description: {item.description}</h2>
                                                 <h4>*******************</h4>
                                             </div>
                                         )

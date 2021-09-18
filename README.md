@@ -21,7 +21,7 @@ This app built by:
 
 ## Change Log
 
-09-16-2021 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource.
+09-18-2021 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource.
 
 ## Credit and Collaborations
 
